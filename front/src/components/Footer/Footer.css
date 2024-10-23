@@ -1,0 +1,12 @@
+.footer {
+    /* background-color:  rgb(228, 115, 50, 0.7); */
+    background-color:  rgb(255,255,255, 0.4);
+    color: rgb(8, 8, 8);
+    position: fixed; /* Fija el navbar en la parte superior */
+    bottom: 0; /* Alinea el navbar en la parte superior */
+    width: 100%; /* Ocupa todo el ancho de la página */
+    /* padding: 25px; */
+    height: 80px;
+    /* border-bottom: 0.5px solid black; */
+    border-radius: 3px;
+}

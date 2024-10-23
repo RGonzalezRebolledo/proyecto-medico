@@ -1,0 +1,48 @@
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+} */
+
+.navbar {
+    /* background-color:  rgb(228, 115, 50, 0.7); */
+    background-color:  rgb(255,255,255, 0.2);
+    color: rgb(8, 8, 8);
+    position: fixed; /* Fija el navbar en la parte superior */
+    top: 0; /* Alinea el navbar en la parte superior */
+    width: 100%; /* Ocupa todo el ancho de la página */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    /* padding: 25px; */
+    height: 80px;
+    /* border-bottom: 0.5px solid black; */
+    border-radius: 3px;
+}
+
+.navbar nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; /* Espaciado entre los elementos */
+
+}
+
+.navbar nav ul li {
+    color: black;
+    text-decoration: none;
+    padding: 15px 15px; /* Espaciado interno */
+}   
+
+.navbar nav ul li:hover {
+    /* background-color: rgb(228, 115, 50, .8); Color de fondo al pasar el mouse */
+    border-radius: 3px;
+}
+
+main {
+    padding-top: 60px; /* Espacio para que el contenido no quede oculto detrás del navbar */
+}
+
+/* section {
+    height: 600px; Altura de las secciones para permitir scroll
+    padding: 20px;
+} */
