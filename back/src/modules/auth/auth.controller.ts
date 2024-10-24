@@ -7,12 +7,12 @@ import { LoginUserDto } from './dto/login-user.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('singup')
+  @Post('signup')
   singUp(@Body() createAuth: CreateUserDto) {
     return this.authService.singUp(createAuth);
   }
 
-  @Post('singin')
+  @Post('signin')
   singIn(@Body() userLogin: LoginUserDto){
     return this.authService.singIn(userLogin)
   }
