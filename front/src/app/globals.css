@@ -19,7 +19,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 div {
@@ -44,6 +44,7 @@ h1 {
   align-items: center;
   height: 100vh;                /* Establece la altura del contenedor (opcional) */
   position: relative; /* Necesario para el posicionamiento absoluto */
+  width: 100%;
 }
 
 .divregister {
