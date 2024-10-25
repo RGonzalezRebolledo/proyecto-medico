@@ -1,7 +1,6 @@
 import React from 'react'
 import '@/components/Navbar/Navbar.css'
 import Link from 'next/link'
-import { register } from 'module'
 
 const Navbar = () => {
   return (
@@ -11,9 +10,7 @@ const Navbar = () => {
           <ul>
           <li><Link href='/'>Inicio</Link></li>
               <li><Link href='/Register'>Registro</Link></li>
-              {/* <li><a href="#about">Acerca de</a></li>
-              <li><a href="#services">Servicios</a></li>
-              <li><a href="#contact">Contacto</a></li> */}
+              <li><Link href='/login'>Inicio Sesión</Link></li>
           </ul>
       </nav>
   {/* </header> */}
