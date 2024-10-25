@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
@@ -31,4 +31,7 @@ export class User {
 
   @Column()
   direction: string;
+
+  @Column({default: false})
+  isAdmin: boolean;
 }
