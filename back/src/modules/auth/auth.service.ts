@@ -1,17 +1,12 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { LoginUserDto } from './dto/login-user.dto';
-import { CreateUserDto } from '../user/dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entity/User.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { Role } from '../decorators/roles.enum';
 import { JwtService } from '@nestjs/jwt';
+import { CreateUserDto } from '../users/dto/create-user.dto';
+import { User } from 'src/entities/User.entity';
+import { Role } from 'src/decorators/roles.enum';
 
 @Injectable()
 export class AuthService {
@@ -21,55 +16,52 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async singUp(createAuth: CreateUserDto) {
-    const userFound = await this.userRepository.findOne({
-      where: { email: createAuth.email },
-    });
-    if (userFound) {
-      throw new ConflictException('El email ya existe');
-    }
-    if (createAuth.password !== createAuth.repeatPassword) {
-      throw new BadRequestException('La contraseña no coincide');
-    }
-
-    const hashPassword = await bcrypt.hash(createAuth.password, 10);
-    if (!hashPassword) {
-      throw new BadRequestException('Error al hashear la contraseña');
-    }
-
-    const newUser = this.userRepository.create({
-      ...createAuth,
-      password: hashPassword,
-    });
-    const { password, repeatPassword, ...rest } = newUser;
-    await this.userRepository.save(newUser);
-    return { message: 'El usuario fue creado exitosamente', rest };
-  }
-
-  async singIn(userLogin: LoginUserDto) {
+  async signIn(userLogin: LoginUserDto) {
     const userFound = await this.userRepository.findOne({
       where: { email: userLogin.email },
     });
     if (!userFound) {
-      throw new NotFoundException('Datos incorrectos');
+      throw new BadRequestException('Datos incorrectos');
     }
-
-    const validPassword = await bcrypt.compare(
+    const isValidPassword = await bcrypt.compare(
       userLogin.password,
       userFound.password,
     );
-    if (!validPassword) {
+    if (!isValidPassword) {
       throw new BadRequestException('Datos incorrectos');
     }
-
     const userPlayLoad = {
       sub: userFound.id,
       id: userFound.id,
       email: userFound.email,
       roles: [userFound.isAdmin ? Role.ADMIN : Role.USER],
     };
-
     const token = this.jwtService.sign(userPlayLoad);
-    return { message: 'Inicio de sesión exitoso', token };
+    return { success: 'Inicio de sesión exitoso', token };
+  }
+
+  async signUp(createAuth: CreateUserDto) {
+    const userFound = await this.userRepository.findOne({
+      where: { email: createAuth.email },
+    });
+    console.log(userFound);
+    if (userFound) {
+      throw new BadRequestException('El email ya existe');
+    }
+    if (createAuth.password !== createAuth.repeatPassword) {
+      throw new BadRequestException('Las contraseñas no coinciden');
+    }
+
+    const hashePassword = await bcrypt.hash(createAuth.password, 10);
+    if (!hashePassword) {
+      throw new BadRequestException('Error al hashear la contraseña');
+    }
+    const newUser = this.userRepository.create({
+      ...createAuth,
+      password: hashePassword,
+    });
+    const { password, repeatPassword, ...rest } = newUser;
+    await this.userRepository.save(newUser);
+    return { success: 'Usuario creado exitosamente', rest };
   }
 }

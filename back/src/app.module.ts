@@ -1,19 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './modules/auth/auth.module';
-import { UserModule } from './modules/user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 import { dbConfig } from './config/data-source';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { JwtModule } from '@nestjs/jwt';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
-    AuthModule,
-    UserModule,
-
     JwtModule.register({
       global: true,
-      signOptions: { expiresIn: '10h' },
+      signOptions: { expiresIn: '1h' },
       secret: process.env.JWT_SECRET,
     }),
 
@@ -24,9 +21,11 @@ import { JwtModule } from '@nestjs/jwt';
 
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (ConfigService: ConfigService) =>
-        ConfigService.get('database'),
+      useFactory: (ConfigService: ConfigService) => ConfigService.get('database'),
     }),
+
+    AuthModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
