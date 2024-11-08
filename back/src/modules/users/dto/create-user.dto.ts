@@ -5,6 +5,26 @@ export class CreateUserDto {
   @IsNotEmpty()
   name: string;
 
+  @IsInt()
+  @IsNotEmpty()
+  age: number;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  sex: boolean;
+
+  @IsInt()
+  @IsNotEmpty()
+  dni: number;
+
+  @IsString()
+  @IsNotEmpty()
+  nacionality: string;
+
+  @IsString()
+  @IsNotEmpty()
+  direction: string;
+
   @IsEmail()
   @IsNotEmpty()
   email: string;
@@ -13,26 +33,7 @@ export class CreateUserDto {
   @IsNotEmpty()
   password: string;
 
-  @IsString()
-  @IsNotEmpty()
-  repeatPassword: string;
-
   @IsBoolean()
-  sex: boolean;
-
-  @IsString()
   @IsNotEmpty()
-  status: string;
-
-  @IsInt()
-  dni: number;
-
-  @IsString()
-  nacionality: string;
-
-  @IsString()
-  direction: string;
-
-  @IsBoolean()
-  isAdmin: boolean;
+  isAdmin?: boolean;
 }
