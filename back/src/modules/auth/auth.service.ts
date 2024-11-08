@@ -44,7 +44,6 @@ export class AuthService {
     const userFound = await this.userRepository.findOne({
       where: { email: createAuth.email },
     });
-    console.log(userFound);
     if (userFound) {
       throw new BadRequestException('El email ya existe');
     }

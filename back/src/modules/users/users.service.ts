@@ -27,26 +27,26 @@ export class UsersService {
   }
 
   async update(id: string, updateUser: UpdateUserDto) {
-    const userFound = await this.userRepository.findOne({where: {id}});
+    const userFound = await this.userRepository.findOne({ where: { id } });
 
-    if(!userFound){
+    if (!userFound) {
       throw new NotFoundException(`Usuario con el id ${id} no encontrado`);
     }
 
-    const newChange = {...userFound, ...updateUser}
-    const newUser = await this.userRepository.save(newChange)
+    const newChange = { ...userFound, ...updateUser };
+    const newUser = await this.userRepository.save(newChange);
 
-    return {message: 'Usuario modificado exitosamente', newUser}
+    return { message: 'Usuario modificado exitosamente', newUser };
   }
 
   async remove(id: string) {
-    const deleteUser = await this.userRepository.findOne({where: {id}});
+    const deleteUser = await this.userRepository.findOne({ where: { id } });
 
-    if(!deleteUser){
-      throw new NotFoundException(`El usuario con ${id} no fue encontrado`)
+    if (!deleteUser) {
+      throw new NotFoundException(`El usuario con ${id} no fue encontrado`);
     }
 
-    await this.userRepository.delete(deleteUser)
-    return {message:'El usuario fue eliminado exitosamente', deleteUser}
+    await this.userRepository.delete(deleteUser);
+    return { message: 'El usuario fue eliminado exitosamente', deleteUser };
   }
 }
