@@ -10,9 +10,13 @@ export const validateFields = (values: IRegisterProps): IRegisterError => {
           errors.name = 'El nombre es requerido';
         }
 
-        if (!values.maritalstatus) {
-          errors.maritalstatus = 'El Estado civil es requerido';
+        if (!values.sex) {
+          errors.sex = 'El sexo es requerido';
         }
+
+        // if (!values.maritalstatus) {
+        //   errors.maritalstatus = 'El Estado civil es requerido';
+        // }
 
         if (!values.dni) {
           errors.dni = 'El Dni es requerido';

@@ -46,7 +46,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       
       if (Object.keys(errors).length > 0) { 
         console.log (errors)
-      alert ('There is an error')
+      alert ('Hayt un error')
       } else {
     
         await register (userData)
@@ -100,7 +100,9 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                 />
           </div>
                     <div>
-                    <input                  
+                    <input   
+                    type='text'  
+                    name='sex'             
                     value={userData.sex}
                     placeholder="Sexo"
                   onChange={handleChange}
@@ -121,7 +123,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           <div>
                 <input
                   id="nacionalidad"
-                  name="nacionalidad"
+                  name="nationality"
                   type="text"
 
                   placeholder="Nacionalidad"
@@ -134,7 +136,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           <div>
                 <input
                   id="direccion"
-                  name="direccion"
+                  name="address"
                   type="text"
 
                   placeholder="Direccion"
@@ -147,7 +149,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           <div>
                 <input
                   id="mail"
-                  name="mail"
+                  name="email"
                   type="text"
 
                   placeholder="Mail"

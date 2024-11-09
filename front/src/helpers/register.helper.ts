@@ -7,7 +7,7 @@ const APIURL = process.env.NEXT_PUBLIC_API_URL
 
 export async function register(userData : IRegisterProps) {
     try {
-      const ResRegister = await fetch (`${APIURL}/auth/singup`, {
+      const ResRegister = await fetch (`${APIURL}/auth/signup`, {
         // cache: 'no-cache'
         method: 'POST',
         headers: {
