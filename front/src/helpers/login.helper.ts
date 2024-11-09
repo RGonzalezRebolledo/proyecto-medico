@@ -6,7 +6,7 @@ const APIURL = process.env.NEXT_PUBLIC_API_URL
 
 export async function login(userData : IloginProps) {
     try {
-      const ResLogin = await fetch (`${APIURL}/auth/singin`, {
+      const ResLogin = await fetch (`${APIURL}/auth/signin`, {
         // cache: 'no-cache'
         method: 'POST',
         headers: {
