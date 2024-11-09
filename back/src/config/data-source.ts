@@ -11,7 +11,7 @@ export const dbConfig = registerAs('database', () => ({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   autoLoadEntities: true,
-  //dropSchema: true,
+  // dropSchema: true,
   synchronize: true,
   logging: false,
   entities: ['dist/**/*.entity{.ts,.js}'],

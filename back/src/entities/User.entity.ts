@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({ name: 'users' })
 export class User {
@@ -8,30 +14,39 @@ export class User {
   @Column()
   name: string;
 
-  @Column()
-  email: string;
+  @Column({ nullable: true })
+  age: number;
 
-  @Column()
-  password: string;
-
-  @Column()
-  repeatPassword: string;
-
-  @Column()
+  @Column({ nullable: true })
   sex: boolean;
 
-  @Column()
-  status: string;
-
-  @Column()
+  @Column({ nullable: true })
   dni: number;
 
-  @Column()
-  nacionality: string;
+  @Column({ nullable: true })
+  nationality: string;
 
-  @Column()
+  @Column({ nullable: true })
   direction: string;
 
-  @Column({default: false})
-  isAdmin: boolean;
+  @Column({ unique: true })
+  email: string;
+
+  @Column({ nullable: true })
+  password: string;
+
+  @Column({ default: false })
+  isAdmin?: boolean;
+
+  @Column({ nullable: true })
+  authProvider: string;
+
+  @Column({ nullable: true })
+  authProviderId: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
