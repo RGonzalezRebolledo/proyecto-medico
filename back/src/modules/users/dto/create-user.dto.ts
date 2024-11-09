@@ -1,9 +1,35 @@
-import { IsString, IsNotEmpty, IsEmail, IsBoolean, IsInt } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsEmail,
+  IsBoolean,
+  IsNumber,
+} from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   name: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  age: number;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  sex: boolean;
+
+  @IsNumber()
+  @IsNotEmpty()
+  dni: number;
+
+  @IsString()
+  @IsNotEmpty()
+  nationality: string;
+
+  @IsString()
+  @IsNotEmpty()
+  direction: string;
 
   @IsEmail()
   @IsNotEmpty()
@@ -13,26 +39,6 @@ export class CreateUserDto {
   @IsNotEmpty()
   password: string;
 
-  @IsString()
-  @IsNotEmpty()
-  repeatPassword: string;
-
   @IsBoolean()
-  sex: boolean;
-
-  @IsString()
-  @IsNotEmpty()
-  status: string;
-
-  @IsInt()
-  dni: number;
-
-  @IsString()
-  nacionality: string;
-
-  @IsString()
-  direction: string;
-
-  @IsBoolean()
-  isAdmin: boolean;
+  isAdmin?: boolean;
 }

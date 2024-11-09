@@ -47,9 +47,6 @@ export class AuthService {
     if (userFound) {
       throw new BadRequestException('El email ya existe');
     }
-    if (createAuth.password !== createAuth.repeatPassword) {
-      throw new BadRequestException('Las contraseñas no coinciden');
-    }
 
     const hashePassword = await bcrypt.hash(createAuth.password, 10);
     if (!hashePassword) {
@@ -59,7 +56,7 @@ export class AuthService {
       ...createAuth,
       password: hashePassword,
     });
-    const { password, repeatPassword, ...rest } = newUser;
+    const { password, ...rest } = newUser;
     await this.userRepository.save(newUser);
     return { success: 'Usuario creado exitosamente', rest };
   }
