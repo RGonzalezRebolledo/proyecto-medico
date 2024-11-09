@@ -23,6 +23,7 @@ export class AuthService {
     if (!userFound) {
       throw new BadRequestException('Datos incorrectos');
     }
+
     const isValidPassword = await bcrypt.compare(
       userLogin.password,
       userFound.password,
@@ -30,6 +31,7 @@ export class AuthService {
     if (!isValidPassword) {
       throw new BadRequestException('Datos incorrectos');
     }
+
     const userPlayLoad = {
       sub: userFound.id,
       id: userFound.id,
@@ -52,6 +54,7 @@ export class AuthService {
     if (!hashePassword) {
       throw new BadRequestException('Error al hashear la contraseña');
     }
+
     const newUser = this.userRepository.create({
       ...createAuth,
       password: hashePassword,
