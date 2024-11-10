@@ -13,8 +13,8 @@ const Register = () => {
 
   const initialState = {
     name: '',
-    edad: '',
-    dni: '',
+    edad: 0,
+    dni: 0,
     nationality: '',
     sex: '',
     email: '',
