@@ -1,26 +1,25 @@
 
 export interface IRegisterProps {
     name: string;
-    maritalstatus: string
-    dni: string
+    dni?: number
     nationality:string
-    sex: string
+    sex?: boolean
     email: string;
     password: string;
     address: string;
     // phone: string;
-    edad: string
+    edad?: number
 
   }
 
   export interface IRegisterError {
     name?: string;
-    maritalstatus?: string
-    dni?: string
+    dni?: number
     nationality?:string
-    sex?: string
+    sex?: boolean
     email?: string;
     password?: string;
     address?: string;
     // phone?: string;
+    edad?: number
   }

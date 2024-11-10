@@ -6,6 +6,8 @@ const APIURL = process.env.NEXT_PUBLIC_API_URL
 // FUNCION QUE REGISTRA LOS DATOS DE LOS USUARIOS
 
 export async function register(userData : IRegisterProps) {
+
+  console.log (userData);
     try {
       const ResRegister = await fetch (`${APIURL}/auth/signup`, {
         // cache: 'no-cache'

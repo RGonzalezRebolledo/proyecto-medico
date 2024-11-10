@@ -14,7 +14,6 @@ const Register = () => {
   const initialState = {
     name: '',
     edad: '',
-    maritalstatus: '',
     dni: '',
     nationality: '',
     sex: '',
@@ -46,7 +45,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       
       if (Object.keys(errors).length > 0) { 
         console.log (errors)
-      alert ('Hayt un error')
+      alert ('Hay un error')
       } else {
     
         await register (userData)
@@ -91,7 +90,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                 <input
                   id="edad"
                   name="edad"
-                  type="text"
+                  type="number"
                   value={userData.edad}
                   onChange={handleChange}
 
@@ -101,7 +100,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           </div>
                     <div>
                     <input   
-                    type='text'  
+                    type='boolean'  
                     name='sex'             
                     value={userData.sex}
                     placeholder="Sexo"
