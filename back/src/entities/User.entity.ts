@@ -18,7 +18,7 @@ export class User {
   age: number;
 
   @Column({ nullable: true })
-  sex: boolean;
+  sex: string;
 
   @Column({ nullable: true })
   dni: number;
