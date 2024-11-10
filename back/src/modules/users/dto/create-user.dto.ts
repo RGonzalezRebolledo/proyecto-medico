@@ -17,7 +17,7 @@ export class CreateUserDto {
 
   @IsBoolean()
   @IsNotEmpty()
-  sex: boolean;
+  sex: string;
 
   @IsNumber()
   @IsNotEmpty()
