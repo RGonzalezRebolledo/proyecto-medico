@@ -17,7 +17,7 @@ export class CreateUserDto {
 
   @IsBoolean()
   @IsNotEmpty()
-  sex: boolean;
+  sex: string;
 
   @IsNumber()
   @IsNotEmpty()
@@ -38,7 +38,4 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   password: string;
-
-  @IsBoolean()
-  isAdmin?: boolean;
 }
