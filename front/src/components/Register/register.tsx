@@ -14,7 +14,7 @@ const userData = {
   nationality: "venezolano",
   sex: "masculino",
   address: "Calle Falsa 123",
-  email: "ramongonzalez101@gmail.com",
+  email: "ramongonzalez101546@gmail.com",
   password: "Aa123456+*",
   direction: "Calle Falsa 123" // Agregado el campo "direction"
 };
@@ -39,9 +39,9 @@ const Register = () => {
   //   initialState
   // );
 
-  const [errors, setErrors] = useState<IRegisterError>(
-    initialState
-  );
+  // const [errors, setErrors] = useState<IRegisterError>(
+  //   initialState
+  // );
 
     // CAPTURO LA INFORMACION DE LOS INPUTS
 // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,10 +67,10 @@ const Register = () => {
       }
 
         // VERIFICO SI EXISTE ALGUN ERROR EN LA VALIDACION DE LOS INPUTS
-  useEffect (() =>{
-    const errors = validateFields (userData)
-    setErrors (errors)
-    }, [userData])
+  // useEffect (() =>{
+  //   const errors = validateFields (userData)
+  //   setErrors (errors)
+  //   }, [userData])
 
 
   return (
@@ -92,7 +92,7 @@ const Register = () => {
                   id="name"
                   name="name"
                   type="text"
-                  value={userData.name}
+                  // value={userData.name}
                   // onChange={handleChange}
                   placeholder="Nombre"
                   required
@@ -103,7 +103,7 @@ const Register = () => {
                   id="edad"
                   name="edad"
                   type="number"
-                  value={userData.age}
+                  // value={userData.age}
                   // onChange={handleChange}
 
                   placeholder="Edad"
@@ -114,7 +114,7 @@ const Register = () => {
                     <input   
                     type='boolean'  
                     name='sex'             
-                    value={userData.sex}
+                    // value={userData.sex}
                     placeholder="Sexo"
                   // onChange={handleChange}
             />
@@ -126,7 +126,7 @@ const Register = () => {
                   type="text"
 
                   placeholder="Dni"
-                  value={userData.dni}
+                  // value={userData.dni}
                   // onChange={handleChange}
                   required
                 />
@@ -138,7 +138,7 @@ const Register = () => {
                   type="text"
 
                   placeholder="Nacionalidad"
-                  value={userData.nationality}
+                  // value={userData.nationality}
                   // onChange={handleChange}
                   required
                 />
@@ -151,7 +151,7 @@ const Register = () => {
                   type="text"
 
                   placeholder="Direccion"
-                  value={userData.direction}
+                  // value={userData.direction}
                   // onChange={handleChange}
                   required
                 />
@@ -164,7 +164,7 @@ const Register = () => {
                   type="text"
 
                   placeholder="Mail"
-                  value={userData.email}
+                  // value={userData.email}
                   // onChange={handleChange}
                   required
                 />
@@ -176,7 +176,7 @@ const Register = () => {
                   type="text"
 
                   placeholder="password"
-                  value={userData.password}
+                  // value={userData.password}
                   // onChange={handleChange}
                   required
                 />
