@@ -7,52 +7,63 @@ import { IRegisterError, IRegisterProps } from '@/interfaces/TypesRegister';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 
+const userData = {
+  name: "Ramon",
+  age: 32,               // Cambiado a "age"
+  dni: 123456789,
+  nationality: "venezolano",
+  sex: "masculino",
+  address: "Calle Falsa 123",
+  email: "ramongonzalez101@gmail.com",
+  password: "Aa123456+*",
+  direction: "Calle Falsa 123" // Agregado el campo "direction"
+};
+
 const Register = () => {
 
   const router = useRouter();
 
   const initialState = {
     name: '',
-    edad: '',
-    maritalstatus: '',
-    dni: '',
+    age: 0,
+    dni: 0,
     nationality: '',
     sex: '',
     email: '',
     password: '',
-    address: '',
+    direction: '',
     // phone: ''
   };
 
-  const [userData, setUserData] = useState<IRegisterProps>(
-    initialState
-  );
+  // const [userData, setUserData] = useState<IRegisterProps>(
+  //   initialState
+  // );
 
   const [errors, setErrors] = useState<IRegisterError>(
     initialState
   );
 
     // CAPTURO LA INFORMACION DE LOS INPUTS
-const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  const {name, value} = event.target;
-  setUserData ({
-    ...userData, [name]:value
-  })
-  }
+// const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//   const {name, value} = event.target;
+//   setUserData ({
+//     ...userData, [name]:value
+//   })
+//   }
 
     // ENVIO LOS DATOS AL BACK
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault ();
       
-      if (Object.keys(errors).length > 0) { 
-        console.log (errors)
-      alert ('Hayt un error')
-      } else {
+      // if (Object.keys(errors).length > 0) { 
+      //   console.log (errors)
+      // alert ('Hay un error')
+      // } else {
     
         await register (userData)
         alert ('registration successful')
         router.push ("/login")
-      }
+      // }
       }
 
         // VERIFICO SI EXISTE ALGUN ERROR EN LA VALIDACION DE LOS INPUTS
@@ -82,7 +93,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                   name="name"
                   type="text"
                   value={userData.name}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   placeholder="Nombre"
                   required
                 />
@@ -91,9 +102,9 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                 <input
                   id="edad"
                   name="edad"
-                  type="text"
-                  value={userData.edad}
-                  onChange={handleChange}
+                  type="number"
+                  value={userData.age}
+                  // onChange={handleChange}
 
                   placeholder="Edad"
                   required
@@ -101,11 +112,11 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           </div>
                     <div>
                     <input   
-                    type='text'  
+                    type='boolean'  
                     name='sex'             
                     value={userData.sex}
                     placeholder="Sexo"
-                  onChange={handleChange}
+                  // onChange={handleChange}
             />
           </div>
           <div>
@@ -116,7 +127,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
                   placeholder="Dni"
                   value={userData.dni}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   required
                 />
           </div>
@@ -128,7 +139,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
                   placeholder="Nacionalidad"
                   value={userData.nationality}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   required
                 />
           </div>
@@ -140,8 +151,8 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                   type="text"
 
                   placeholder="Direccion"
-                  value={userData.address}
-                  onChange={handleChange}
+                  value={userData.direction}
+                  // onChange={handleChange}
                   required
                 />
           </div>
@@ -154,7 +165,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
                   placeholder="Mail"
                   value={userData.email}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   required
                 />
           </div>
@@ -166,7 +177,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
                   placeholder="password"
                   value={userData.password}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   required
                 />
           </div>
