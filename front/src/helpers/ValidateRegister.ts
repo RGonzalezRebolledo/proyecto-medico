@@ -75,12 +75,12 @@ export const validateFields = (values: IRegisterProps): IRegisterError => {
       errors.messages!.password = 'La contraseña debe tener al menos 8 caracteres'; // Usa el operador de aserción no nula
   }
 
-  if (!values.address) {
-      errors.messages!.address = 'La dirección es requerida'; // Usa el operador de aserción no nula
+  if (!values.direction) {
+      errors.messages!.direction = 'La dirección es requerida'; // Usa el operador de aserción no nula
   }
 
-  if (!values.edad) {
-      errors.messages!.edad = 'La edad es requerida'; // Usa el operador de aserción no nula
+  if (!values.age) {
+      errors.messages!.age = 'La edad es requerida'; // Usa el operador de aserción no nula
   }
 
   return errors;
