@@ -3,11 +3,10 @@ export interface IRegisterProps {
     name: string
     dni: number
     nationality:string
-    sex?: string
+    sex: string
     email: string
     password: string
     direction: string
-    // phone: string;
     age: number
 
   }

@@ -7,17 +7,17 @@ import { IRegisterError, IRegisterProps } from '@/interfaces/TypesRegister';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 
-const userData = {
-  name: "Ramon",
-  age: 32,               // Cambiado a "age"
-  dni: 123456789,
-  nationality: "venezolano",
-  sex: "masculino",
-  address: "Calle Falsa 123",
-  email: "ramongonzalez101546@gmail.com",
-  password: "Aa123456+*",
-  direction: "Calle Falsa 123" // Agregado el campo "direction"
-};
+// const userDataH = {
+//   name: "Ramon",
+//   age: 32,
+//   nationality: "venezolano",               // Cambiado a "age"
+//   dni: 1234,
+//   sex: "masculino",
+//   // address: "Calle Falsa 123",
+//   email: "ramongonzal453625645@gmail.com",
+//   password: "Aa123456+*",
+//   direction: "Calle Falsa 123" // Agregado el campo "direction"
+// };
 
 const Register = () => {
 
@@ -31,40 +31,54 @@ const Register = () => {
     sex: '',
     email: '',
     password: '',
-    direction: '',
+    direction: ''
     // phone: ''
   };
 
-  // const [userData, setUserData] = useState<IRegisterProps>(
-  //   initialState
-  // );
+  const [userData, setUserData] = useState<IRegisterProps>(
+     initialState
+   );
 
-  // const [errors, setErrors] = useState<IRegisterError>(
-  //   initialState
-  // );
+   const [errors, setErrors] = useState<IRegisterError>(
+     initialState
+ );
 
-    // CAPTURO LA INFORMACION DE LOS INPUTS
-// const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//   const {name, value} = event.target;
-//   setUserData ({
-//     ...userData, [name]:value
-//   })
-//   }
+const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = event.target;
+
+  // Convierte el valor a número si el campo es 'age' o 'dni'
+  const newValue = (name === 'age' || name === 'dni') ? Number(value) : value;
+
+  setUserData({
+    ...userData,
+    [name]: newValue
+  });
+}
 
     // ENVIO LOS DATOS AL BACK
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault ();
-      
-      // if (Object.keys(errors).length > 0) { 
-      //   console.log (errors)
-      // alert ('Hay un error')
-      // } else {
+      event.preventDefault();
     
-        await register (userData)
-        alert ('registration successful')
-        router.push ("/login")
+      // if (Object.keys(errors).length > 0) {
+      //   console.log(errors);
+      //   alert('Hay un error');
+      // } else {
+        try {
+          const response = await register(userData);
+          if (response.success) {
+            alert('Registro exitoso');
+            router.push('/login');
+          } else {
+            alert(`Error: ${response.message}`);
+          }
+        } catch (error: any) {
+          alert(`Error: ${error.message || 'Error desconocido'}`);
+        }
       // }
-      }
+    };
+
+
+
 
         // VERIFICO SI EXISTE ALGUN ERROR EN LA VALIDACION DE LOS INPUTS
   // useEffect (() =>{
@@ -92,8 +106,8 @@ const Register = () => {
                   id="name"
                   name="name"
                   type="text"
-                  // value={userData.name}
-                  // onChange={handleChange}
+                  value={userData.name}
+                   onChange={handleChange}
                   placeholder="Nombre"
                   required
                 />
@@ -101,10 +115,10 @@ const Register = () => {
           <div>
                 <input
                   id="edad"
-                  name="edad"
+                  name="age"
                   type="number"
-                  // value={userData.age}
-                  // onChange={handleChange}
+                   value={userData.age}
+                   onChange={handleChange}
 
                   placeholder="Edad"
                   required
@@ -112,22 +126,22 @@ const Register = () => {
           </div>
                     <div>
                     <input   
-                    type='boolean'  
+                    type='text'  
                     name='sex'             
-                    // value={userData.sex}
+                     value={userData.sex}
                     placeholder="Sexo"
-                  // onChange={handleChange}
+                   onChange={handleChange}
             />
           </div>
           <div>
                 <input
                   id="dni"
                   name="dni"
-                  type="text"
+                  type="number"
 
                   placeholder="Dni"
-                  // value={userData.dni}
-                  // onChange={handleChange}
+                   value={userData.dni}
+                   onChange={handleChange}
                   required
                 />
           </div>
@@ -138,8 +152,8 @@ const Register = () => {
                   type="text"
 
                   placeholder="Nacionalidad"
-                  // value={userData.nationality}
-                  // onChange={handleChange}
+                   value={userData.nationality}
+                   onChange={handleChange}
                   required
                 />
           </div>
@@ -147,12 +161,12 @@ const Register = () => {
           <div>
                 <input
                   id="direccion"
-                  name="address"
+                  name="direction"
                   type="text"
 
                   placeholder="Direccion"
-                  // value={userData.direction}
-                  // onChange={handleChange}
+                   value={userData.direction}
+                   onChange={handleChange}
                   required
                 />
           </div>
@@ -164,8 +178,8 @@ const Register = () => {
                   type="text"
 
                   placeholder="Mail"
-                  // value={userData.email}
-                  // onChange={handleChange}
+                   value={userData.email}
+                   onChange={handleChange}
                   required
                 />
           </div>
@@ -176,8 +190,8 @@ const Register = () => {
                   type="text"
 
                   placeholder="password"
-                  // value={userData.password}
-                  // onChange={handleChange}
+                   value={userData.password}
+                  onChange={handleChange}
                   required
                 />
           </div>
