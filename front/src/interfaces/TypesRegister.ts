@@ -1,25 +1,25 @@
 
 export interface IRegisterProps {
     name: string
-    dni: number
+    dni: string
     nationality:string
     sex: string
     email: string
     password: string
     direction: string
-    age: number
+    age: string
 
   }
 
   export interface IRegisterError {
     name?: string;
-    dni?: number; // Mantener como number
+    dni?: string; // Mantener como number
     nationality?: string;
     sex?: string;
     email?: string;
     password?: string;
     direction?: string;
-    age?: number; // Mantener como number
+    age?: string; // Mantener como number
     messages?: {
         name?: string;
         dni?: string; // Mensaje de error

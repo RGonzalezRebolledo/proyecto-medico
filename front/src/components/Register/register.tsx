@@ -25,8 +25,8 @@ const Register = () => {
 
   const initialState = {
     name: '',
-    age: 0,
-    dni: 0,
+    age: '',
+    dni: '',
     nationality: '',
     sex: '',
     email: '',
