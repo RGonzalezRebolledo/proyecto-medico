@@ -16,37 +16,37 @@ export class UsersService {
     return await this.userRepository.find();
   }
 
-  async findOne(id: string) {
-    const userFound = await this.userRepository.findOne({ where: { id } });
+  // async findOne(id: string) {
+  //   const userFound = await this.userRepository.findOne({ where: { id } });
 
-    if (!userFound) {
-      throw new NotFoundException('El usuario no encontrado');
-    }
+  //   if (!userFound) {
+  //     throw new NotFoundException('El usuario no encontrado');
+  //   }
 
-    return userFound;
-  }
+  //   return userFound;
+  // }
 
-  async update(id: string, updateUser: UpdateUserDto) {
-    const userFound = await this.userRepository.findOne({ where: { id } });
+  // async update(id: string, updateUser: UpdateUserDto) {
+  //   const userFound = await this.userRepository.findOne({ where: { id } });
 
-    if (!userFound) {
-      throw new NotFoundException(`Usuario con el id ${id} no encontrado`);
-    }
+  //   if (!userFound) {
+  //     throw new NotFoundException(`Usuario con el id ${id} no encontrado`);
+  //   }
 
-    const newChange = { ...userFound, ...updateUser };
-    const newUser = await this.userRepository.save(newChange);
+  //   const newChange = { ...userFound, ...updateUser };
+  //   const newUser = await this.userRepository.save(newChange);
 
-    return { message: 'Usuario modificado exitosamente', newUser };
-  }
+  //   return { message: 'Usuario modificado exitosamente', newUser };
+  // }
 
-  async remove(id: string) {
-    const deleteUser = await this.userRepository.findOne({ where: { id } });
+  // async remove(id: string) {
+  //   const deleteUser = await this.userRepository.findOne({ where: { id } });
 
-    if (!deleteUser) {
-      throw new NotFoundException(`El usuario con ${id} no fue encontrado`);
-    }
+  //   if (!deleteUser) {
+  //     throw new NotFoundException(`El usuario con ${id} no fue encontrado`);
+  //   }
 
-    await this.userRepository.delete(deleteUser);
-    return { message: 'El usuario fue eliminado exitosamente', deleteUser };
-  }
+  //   await this.userRepository.delete(deleteUser);
+  //   return { message: 'El usuario fue eliminado exitosamente', deleteUser };
+  // }
 }
