@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate {
       request.user = playLoad;
       return true;
     } catch (error) {
-      throw new UnauthorizedException('Invalido Token');
+      throw new UnauthorizedException('Token de autenticación inválido');
     }
   }
 }

@@ -9,44 +9,23 @@ import {
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: number;
 
   @Column()
   name: string;
 
-  @Column({ nullable: true })
-  age: number;
-
-  @Column({ nullable: true })
-  sex: string;
-
-  @Column({ nullable: true })
-  dni: number;
-
-  @Column({ nullable: true })
-  nationality: string;
-
-  @Column({ nullable: true })
-  direction: string;
-
-  @Column({ unique: true })
+  @Column()
   email: string;
 
-  @Column({ nullable: true })
+  @Column()
   password: string;
 
-  @Column({ default: false })
-  isAdmin?: boolean;
+  @Column({ default: 'cliente' })
+  role: string;
 
-  @Column({ nullable: true })
-  authProvider: string;
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
 
-  @Column({ nullable: true })
-  authProviderId: string;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
 }
